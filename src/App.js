@@ -282,9 +282,9 @@ function App() {
   
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       {!loaded && <LoadingScreen />}
-      <div className={`App min-h-screen bg-gradient-to-br from-deep-space to-space-gray flex flex-col items-center justify-center p-4 sm:p-8 ${!loaded ? 'hidden' : ''}`}>
+      <div className={`flex-grow App bg-gradient-to-br from-deep-space to-space-gray flex flex-col items-center justify-center p-4 sm:p-8 ${!loaded ? 'hidden' : ''}`}>
         <div className="w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-center space-y-8 xl:space-y-0 xl:space-x-8">
           <Menu
             postureRef={postureRef}
@@ -312,6 +312,9 @@ function App() {
           </div>
         </div>
       </div>
+      <footer className="bg-deep-space text-neon-blue py-2 text-center">
+        <p className="text-sm">made with 💌 by Prince</p>
+      </footer>
     </div>
   );
 }
