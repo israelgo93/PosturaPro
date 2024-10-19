@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {Pose} from '@mediapipe/pose';
 import * as cam from '@mediapipe/camera_utils';
 import * as mediapipePose from '@mediapipe/pose';
@@ -11,6 +11,7 @@ import {
   changeStyleProperty,
   badPosture,
   showNotification,
+  speakFeedback,
 } from './utils/utilities'
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
   let goodPosture = null; 
   let loaded = false; 
   let badPostureCount = 0; //variable keeps track of the # of frames the user has bad posture
+
+  const [lastAudioFeedbackTime, setLastAudioFeedbackTime] = useState(0);
+  const audioFeedbackInterval = 30000; // 30 seconds
 
   //run this function when pose results are determined
   function onResults(results){
@@ -75,6 +79,14 @@ function App() {
       changeStyleProperty('--posture-status',"'BAD'"); //maybe move this inside conditional
       if(badPostureCount >= 60){ //60 frames = 2 seconds of bad posture
         showNotification("Correct your posture!");
+        
+        // Add audio feedback
+        const currentTime = Date.now();
+        if (currentTime - lastAudioFeedbackTime > audioFeedbackInterval) {
+          speakFeedback("Your posture needs correction. Please sit up straight.");
+          setLastAudioFeedbackTime(currentTime);
+        }
+        
         badPostureCount = 0;
       }
     }else{
@@ -90,8 +102,8 @@ function App() {
     pose.setOptions({
       modelComplexity: 1,
       smoothLandmarks: true,
-      enableSegmentation: false,//true,
-      smoothSegmentation: false,//true,
+      enableSegmentation: false,
+      smoothSegmentation: false,
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5
     });

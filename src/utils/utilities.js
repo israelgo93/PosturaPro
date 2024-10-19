@@ -14,3 +14,17 @@ export function changeStyleProperty(property, value){
   export function showNotification(notificationText){
     new Notification(notificationText);
   }
+
+// Add this new function for audio feedback
+export function speakFeedback(message) {
+  if ('speechSynthesis' in window) {
+    const speech = new SpeechSynthesisUtterance(message);
+    speech.lang = 'en-US';
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+    window.speechSynthesis.speak(speech);
+  } else {
+    console.log("Speech synthesis not supported");
+  }
+}
