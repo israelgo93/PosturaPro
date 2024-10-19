@@ -33,6 +33,88 @@ function App() {
   const [lastAudioFeedbackTime, setLastAudioFeedbackTime] = useState(0);
   const audioFeedbackInterval = 30000; // 30 seconds
 
+  const [postureFeedback, setPostureFeedback] = useState('');
+
+  function getPostureFeedback(landmarks, goodPosture) {
+    let feedback = [];
+
+    // Check head position
+    const headYDiff = landmarks[0].y - goodPosture[0].y;
+    if (headYDiff > 0.03) {
+      feedback.push("Lift your head slightly");
+    } else if (headYDiff < -0.03) {
+      feedback.push("Lower your head slightly");
+    }
+
+    // Check shoulders
+    const shoulderYDiff = Math.abs(landmarks[11].y - landmarks[12].y);
+    if (shoulderYDiff > 0.02) {
+      if (landmarks[11].y > landmarks[12].y) {
+        feedback.push("Level your shoulders by raising your left shoulder");
+      } else {
+        feedback.push("Level your shoulders by raising your right shoulder");
+      }
+    }
+
+    // Check back straightness
+    const midShoulder = {
+      x: (landmarks[11].x + landmarks[12].x) / 2,
+      y: (landmarks[11].y + landmarks[12].y) / 2
+    };
+    const midHip = {
+      x: (landmarks[23].x + landmarks[24].x) / 2,
+      y: (landmarks[23].y + landmarks[24].y) / 2
+    };
+    const midKnee = {
+      x: (landmarks[25].x + landmarks[26].x) / 2,
+      y: (landmarks[25].y + landmarks[26].y) / 2
+    };
+
+    const backAngle = Math.atan2(midHip.y - midShoulder.y, midHip.x - midShoulder.x);
+    const goodBackAngle = Math.atan2(
+      (goodPosture[23].y + goodPosture[24].y) / 2 - (goodPosture[11].y + goodPosture[12].y) / 2,
+      (goodPosture[23].x + goodPosture[24].x) / 2 - (goodPosture[11].x + goodPosture[12].x) / 2
+    );
+
+    if (Math.abs(backAngle - goodBackAngle) > 0.1) {
+      if (backAngle > goodBackAngle) {
+        feedback.push("Straighten your back by sitting up more");
+      } else {
+        feedback.push("Relax your back slightly");
+      }
+    }
+
+    // Check if leaning too far forward or backward
+    const shoulderToHipAngle = Math.atan2(midHip.y - midShoulder.y, midHip.x - midShoulder.x);
+    const goodShoulderToHipAngle = Math.atan2(
+      (goodPosture[23].y + goodPosture[24].y) / 2 - (goodPosture[11].y + goodPosture[12].y) / 2,
+      (goodPosture[23].x + goodPosture[24].x) / 2 - (goodPosture[11].x + goodPosture[12].x) / 2
+    );
+
+    if (shoulderToHipAngle - goodShoulderToHipAngle > 0.1) {
+      feedback.push("Sit back slightly, you're leaning too far forward");
+    } else if (goodShoulderToHipAngle - shoulderToHipAngle > 0.1) {
+      feedback.push("Sit up slightly, you're leaning too far backward");
+    }
+
+    // Check for hunched shoulders
+    const neckLength = Math.hypot(landmarks[0].x - midShoulder.x, landmarks[0].y - midShoulder.y);
+    const goodNeckLength = Math.hypot(
+      goodPosture[0].x - ((goodPosture[11].x + goodPosture[12].x) / 2),
+      goodPosture[0].y - ((goodPosture[11].y + goodPosture[12].y) / 2)
+    );
+    if (neckLength < goodNeckLength * 0.95) {
+      feedback.push("Relax your shoulders and stretch your neck");
+    }
+
+    // Provide positive feedback if posture is good
+    if (feedback.length === 0) {
+      feedback.push("Great posture! Keep it up!");
+    }
+
+    return feedback.join(". ");
+  }
+
   //run this function when pose results are determined
   function onResults(results){
     if(!loaded){ 
@@ -102,6 +184,32 @@ function App() {
       const nose = landmarks[0];
       const headColor = nose.y < goodPosture[0].y ? 'green' : 'red';
       drawCircle(canvasCtx, nose.x * canvasElement.width, nose.y * canvasElement.height, 10, headColor);
+
+      // Get and set posture feedback
+      const feedback = getPostureFeedback(landmarks, goodPosture);
+      setPostureFeedback(feedback);
+
+      // Update posture status
+      if (feedback.includes("Great posture!")) {
+        changeStyleProperty('--posture-status',"'GOOD'");
+        badPostureCount = 0;
+      } else {
+        changeStyleProperty('--posture-status',"'NEEDS IMPROVEMENT'");
+        badPostureCount++;
+      }
+
+      // Provide audio feedback if needed
+      if(badPostureCount >= 60){ // 60 frames = 2 seconds of bad posture
+        showNotification("Posture needs attention!");
+        
+        const currentTime = Date.now();
+        if (currentTime - lastAudioFeedbackTime > audioFeedbackInterval) {
+          speakFeedback(feedback);
+          setLastAudioFeedbackTime(currentTime);
+        }
+        
+        badPostureCount = 0;
+      }
     }
 
     if(btnSelected){
@@ -124,7 +232,7 @@ function App() {
         // Add audio feedback
         const currentTime = Date.now();
         if (currentTime - lastAudioFeedbackTime > audioFeedbackInterval) {
-          speakFeedback("Your posture needs correction. Please sit up straight.");
+          speakFeedback(postureFeedback || "Your posture needs correction. Please sit up straight.");
           setLastAudioFeedbackTime(currentTime);
         }
         
@@ -196,6 +304,11 @@ function App() {
             <div className="absolute top-4 left-4 bg-deep-space bg-opacity-70 text-neon-blue px-3 py-1 rounded-full text-sm font-medium z-30 backdrop-filter backdrop-blur-sm">
               Live Feed
             </div>
+            {postureFeedback && (
+              <div className="absolute bottom-4 left-4 right-4 bg-deep-space bg-opacity-70 text-neon-green px-3 py-2 rounded-lg text-sm font-medium z-30 backdrop-filter backdrop-blur-sm">
+                {postureFeedback}
+              </div>
+            )}
           </div>
         </div>
       </div>
