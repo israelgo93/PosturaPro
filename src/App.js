@@ -27,7 +27,7 @@ function App() {
   const postureRef = useRef(null); //value of 1 is bad, 0 is good, -1 is undetected
   
   let goodPosture = null; 
-  let loaded = false; 
+  const [loaded, setLoaded] = useState(false);
   let badPostureCount = 0; //variable keeps track of the # of frames the user has bad posture
 
   const [lastAudioFeedbackTime, setLastAudioFeedbackTime] = useState(0);
@@ -36,7 +36,7 @@ function App() {
   //run this function when pose results are determined
   function onResults(results){
     if(!loaded){ 
-      loaded = true;
+      setLoaded(true);
       console.log("HPE model finished loading.");
       changeStyleProperty("--loader-display","none");
     }
@@ -171,26 +171,33 @@ function App() {
     }
 
   }, []);
+  
 
   return (
-    <div className="App min-h-screen bg-gradient-to-b from-deep-space to-black flex flex-col items-center justify-center p-8">
-      <LoadingScreen/>
-      <Menu
-        postureRef={postureRef}
-      />
-      <div className="display relative rounded-2xl overflow-hidden shadow-neon">
-        <Webcam
-          ref={webcamRef}
-          className="webcam rounded-2xl"
-          width="640px"
-          height="480px"
-        />
-        <canvas
-          ref={canvasRef}
-          className="canvas absolute top-0 left-0 rounded-2xl"
-          width="640px"
-          height="480px"
-        />
+    <div>
+      {!loaded && <LoadingScreen />}
+      <div className={`App min-h-screen bg-gradient-to-br from-deep-space to-space-gray flex flex-col items-center justify-center p-4 sm:p-8 ${!loaded ? 'hidden' : ''}`}>
+        <div className="w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-center space-y-8 xl:space-y-0 xl:space-x-8">
+          <Menu
+            postureRef={postureRef}
+          />
+          <div className="display relative rounded-3xl overflow-hidden w-full max-w-lg xl:max-w-xl bg-deep-space">
+            <div className="absolute inset-0 bg-gradient-to-r from-neon-blue to-neon-green opacity-5 z-10"></div>
+            <Webcam
+              ref={webcamRef}
+              className="webcam rounded-3xl w-full opacity-90"
+              width="100%"
+              height="auto"
+            />
+            <canvas
+              ref={canvasRef}
+              className="canvas absolute top-0 left-0 rounded-3xl w-full h-full z-20"
+            />
+            <div className="absolute top-4 left-4 bg-deep-space bg-opacity-70 text-neon-blue px-3 py-1 rounded-full text-sm font-medium z-30 backdrop-filter backdrop-blur-sm">
+              Live Feed
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
