@@ -1,3 +1,82 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --loader-display: flex;
+  --btn-color: rgba(0, 237, 255, 1);
+  --posture-status: "UNKNOWN";
+  --posture-status-color: #00eaff;
+  --bg-color: #0a0a1f;
+  --text-color: #ffffff;
+}
+
+body {
+  @apply bg-deep-space text-neon-blue font-sans antialiased;
+  margin: 0;
+  font-family: 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.menu {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 234, 255, 0.1);
+}
+
+.btn {
+  background-color: var(--btn-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  background-color: #00ff9d;
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+}
+
+.display {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.3);
+}
+
+.webcam, .canvas {
+  border-radius: 15px;
+}
+
+.posture-status {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--posture-status-color);
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+}
+
+.posture-status::after {
+  content: var(--posture-status);
+}
+
+/* Add more futuristic styles as needed */
