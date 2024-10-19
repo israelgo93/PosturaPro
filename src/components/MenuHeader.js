@@ -2,7 +2,7 @@ export function MenuHeader(props) {
     if(props.state === "Calibration"){
       return(
         <div className="text-neon-blue">
-          <h3 className="text-2xl font-bold mb-4">Welcome to Posture AI</h3>
+          <h3 className="text-2xl font-bold mb-4">Welcome to ergoSmart AI</h3>
           <ol className="list-decimal list-inside space-y-2">
             <li>Ensure your webcam is on and positioned directly in front of you</li>
             <li>Sit upright with "good" posture, head and shoulders in frame</li>

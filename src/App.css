@@ -1,16 +1,15 @@
 /*css loader styles*/
-.loading-screen {
+/* .loading-screen {
   position: fixed;
   z-index: 999;
-  width: 100%;
-  height: 100%;
+
   background: white;
   color: black;
   display: var(--loader-display);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .lds-dual-ring {
   display: inline-block;
