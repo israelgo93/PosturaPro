@@ -12,6 +12,10 @@ import {
   badPosture,
   showNotification,
   speakFeedback,
+  drawLine,
+  drawCircle,
+  shouldersLevel,
+  backStraight
 } from './utils/utilities'
 
 function App() {
@@ -62,6 +66,43 @@ function App() {
     drawLandmarks(canvasCtx, results.poseLandmarks,
                   {color: '#fff'/*'#FF0000'*/, lineWidth: 2});
     canvasCtx.restore();
+
+    if(goodPosture && results.poseLandmarks){
+      const landmarks = results.poseLandmarks;
+      const canvasElement = canvasRef.current;
+      const canvasCtx = canvasElement.getContext("2d");
+
+      // Draw shoulder level indicator
+      const leftShoulder = landmarks[11];
+      const rightShoulder = landmarks[12];
+      const shoulderColor = shouldersLevel(leftShoulder, rightShoulder) ? 'green' : 'red';
+      drawLine(canvasCtx, leftShoulder.x * canvasElement.width, leftShoulder.y * canvasElement.height, 
+               rightShoulder.x * canvasElement.width, rightShoulder.y * canvasElement.height, shoulderColor, 4);
+
+      // Draw back straightness indicator
+      const midShoulder = {
+        x: (leftShoulder.x + rightShoulder.x) / 2,
+        y: (leftShoulder.y + rightShoulder.y) / 2
+      };
+      const midHip = {
+        x: (landmarks[23].x + landmarks[24].x) / 2,
+        y: (landmarks[23].y + landmarks[24].y) / 2
+      };
+      const midKnee = {
+        x: (landmarks[25].x + landmarks[26].x) / 2,
+        y: (landmarks[25].y + landmarks[26].y) / 2
+      };
+      const backColor = backStraight(midShoulder, midHip, midKnee) ? 'green' : 'red';
+      drawLine(canvasCtx, midShoulder.x * canvasElement.width, midShoulder.y * canvasElement.height,
+               midHip.x * canvasElement.width, midHip.y * canvasElement.height, backColor, 4);
+      drawLine(canvasCtx, midHip.x * canvasElement.width, midHip.y * canvasElement.height,
+               midKnee.x * canvasElement.width, midKnee.y * canvasElement.height, backColor, 4);
+
+      // Draw head position indicator
+      const nose = landmarks[0];
+      const headColor = nose.y < goodPosture[0].y ? 'green' : 'red';
+      drawCircle(canvasCtx, nose.x * canvasElement.width, nose.y * canvasElement.height, 10, headColor);
+    }
 
     if(btnSelected){
       goodPosture = landmarks; //obtain a copy of the "good pose"
