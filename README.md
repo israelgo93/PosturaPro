@@ -1,7 +1,7 @@
 # 🪑 ergoSmart: Your AI-Powered Posture Coach
 
 <div align="center">
-  <img src="path/to/ergosmart-logo.png" alt="ergoSmart Logo" width="200"/>
+  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/ergosmart.png?raw=true" alt="ergoSmart Logo" width="200"/>
   <br>
   <em>Revolutionizing workplace ergonomics with artificial intelligence</em>
 </div>
@@ -11,9 +11,8 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="path/to/main-interface.png" alt="Main Interface" width="30%"/>
-  <img src="path/to/posture-feedback.png" alt="Posture Feedback" width="30%"/>
-  <img src="path/to/virtual-coach.png" alt="Virtual Coach" width="30%"/>
+  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/img1.png?raw=true" alt="Main Interface" width="30%"/>
+  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/img2.png?raw=true" alt="Posture Feedback" width="30%"/>
 </div>
 
 ## 🌐 Blog Post
