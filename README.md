@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# 🪑 ergoSmart: Your AI-Powered Posture Coach
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="path/to/ergosmart-logo.png" alt="ergoSmart Logo" width="200"/>
+  <br>
+  <em>Revolutionizing workplace ergonomics with artificial intelligence</em>
+</div>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📸 Screenshots
 
-### `npm start`
+<div align="center">
+  <img src="path/to/main-interface.png" alt="Main Interface" width="30%"/>
+  <img src="path/to/posture-feedback.png" alt="Posture Feedback" width="30%"/>
+  <img src="path/to/virtual-coach.png" alt="Virtual Coach" width="30%"/>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌐 Blog Post
+For a deeper dive into how ergoSmart was built, including detailed explanations and code snippets, check out the <a href="https://medium.com/@psr8084/building-a-real-time-posture-monitoring-application-with-mediapipe-and-react-a-comprehensive-guide-e7c7a8adc536"> Medium Post</a>.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🌟 Features
 
-### `npm test`
+- 🎥 Real-time posture analysis using webcam feed
+- 🤖 AI-driven personalized posture feedback
+- 🗣️ Audio notifications for prolonged poor posture
+- 🎨 Sleek, user-friendly interface
+- 📱 Responsive design for all devices
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Quick Start
 
-### `npm run build`
+1. Clone the repo:   ```
+   git clone https://github.com/princesinghrajput/ergoSmart.git   ```
+2. Install dependencies:   ```
+   cd ergosmart && npm install   ```
+3. Start the app:   ```
+   npm start   ```
+4. Open `http://localhost:3000` in your browser
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Technologies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React.js
+- TensorFlow.js
+- MediaPipe Pose
+- Tailwind CSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧠 How It Works
 
-### `npm run eject`
+1. **Pose Estimation**: ergoSmart uses MediaPipe Pose to track key body landmarks in real-time.
+2. **Posture Analysis**: Your current posture is compared to an ideal model.
+3. **Feedback Generation**: Realtime posture improvement suggestions.
+4. **Smart Notifications**: Receive timely audio and visual alerts for posture correction.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🤝 Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You're welcome to contribute! If you have suggestions for improvements or encounter any issues, please feel free to open an issue or submit a pull request.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div align="center">
+  Made with 💙 by Prince | Empowering better posture, one sit at a time
+</div>
