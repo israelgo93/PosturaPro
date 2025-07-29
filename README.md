@@ -1,7 +1,7 @@
 # 🪑 PosturaPro: Tu Entrenador de Postura con IA
 
 <div align="center">
-  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/ergosmart.png?raw=true" alt="PosturaPro Logo" width="200"/>
+  <img src="https://github.com/israelgo93/PosturaPro/blob/main/public/screenshots/ergosmart.png?raw=true" alt="PosturaPro Logo" width="200"/>
   <br>
   <em>Revolucionando la ergonomía en el trabajo con inteligencia artificial</em>
 </div>
@@ -11,8 +11,8 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/img1.png?raw=true" alt="Main Interface" width="30%"/>
-  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/img2.png?raw=true" alt="Posture Feedback" width="30%"/>
+  <img src="https://github.com/israelgo93/PosturaPro/blob/main/public/screenshots/img1.png?raw=true" alt="Main Interface" width="30%"/>
+  <img src="https://github.com/israelgo93/PosturaPro/blob/main/public/screenshots/img2.png?raw=true" alt="Posture Feedback" width="30%"/>
 </div>
 
 ## 🌐 Artículo del Blog
