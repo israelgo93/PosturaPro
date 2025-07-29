@@ -15,9 +15,6 @@
   <img src="https://github.com/israelgo93/PosturaPro/blob/main/public/screenshots/img2.png?raw=true" alt="Posture Feedback" width="30%"/>
 </div>
 
-## 🌐 Artículo del Blog
-Para una explicación más profunda de cómo se construyó PosturaPro, incluyendo explicaciones detalladas y fragmentos de código, consulta el <a href="https://medium.com/@psr8084/building-a-real-time-posture-monitoring-application-with-mediapipe-and-react-a-comprehensive-guide-e7c7a8adc536"> Artículo en Medium</a>.
-
 ## 🌟 Características
 
 - 🎥 Análisis de postura en tiempo real usando la cámara web
@@ -29,7 +26,7 @@ Para una explicación más profunda de cómo se construyó PosturaPro, incluyend
 ## 🚀 Inicio Rápido
 
 1. Clona el repositorio:   ```
-   git clone https://github.com/princesinghrajput/ergoSmart.git   ```
+   git clone https://github.com/israelgo93/PosturaPro.git   ```
 2. Instala las dependencias:   ```
    cd ergosmart && npm install   ```
 3. Inicia la aplicación:   ```
