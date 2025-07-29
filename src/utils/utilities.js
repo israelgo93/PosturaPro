@@ -19,13 +19,13 @@ export function changeStyleProperty(property, value){
 export function speakFeedback(message) {
   if ('speechSynthesis' in window) {
     const speech = new SpeechSynthesisUtterance(message);
-    speech.lang = 'en-US';
+    speech.lang = 'es-ES';
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
     window.speechSynthesis.speak(speech);
   } else {
-    console.log("Speech synthesis not supported");
+    console.log("Síntesis de voz no soportada");
   }
 }
 

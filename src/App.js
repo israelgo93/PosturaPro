@@ -41,18 +41,18 @@ function App() {
     // Check head position
     const headYDiff = landmarks[0].y - goodPosture[0].y;
     if (headYDiff > 0.03) {
-      feedback.push("Lift your head slightly");
+      feedback.push("Levanta ligeramente la cabeza");
     } else if (headYDiff < -0.03) {
-      feedback.push("Lower your head slightly");
+      feedback.push("Baja ligeramente la cabeza");
     }
 
     // Check shoulders
     const shoulderYDiff = Math.abs(landmarks[11].y - landmarks[12].y);
     if (shoulderYDiff > 0.02) {
       if (landmarks[11].y > landmarks[12].y) {
-        feedback.push("Level your shoulders by raising your left shoulder");
+        feedback.push("Nivela los hombros levantando el hombro izquierdo");
       } else {
-        feedback.push("Level your shoulders by raising your right shoulder");
+        feedback.push("Nivela los hombros levantando el hombro derecho");
       }
     }
 
@@ -78,9 +78,9 @@ function App() {
 
     if (Math.abs(backAngle - goodBackAngle) > 0.1) {
       if (backAngle > goodBackAngle) {
-        feedback.push("Straighten your back by sitting up more");
+        feedback.push("Endereza la espalda sentándote más erguido");
       } else {
-        feedback.push("Relax your back slightly");
+        feedback.push("Relaja ligeramente la espalda");
       }
     }
 
@@ -92,9 +92,9 @@ function App() {
     );
 
     if (shoulderToHipAngle - goodShoulderToHipAngle > 0.1) {
-      feedback.push("Sit back slightly, you're leaning too far forward");
+      feedback.push("Siéntate un poco hacia atrás, te estás inclinando demasiado hacia adelante");
     } else if (goodShoulderToHipAngle - shoulderToHipAngle > 0.1) {
-      feedback.push("Sit up slightly, you're leaning too far backward");
+      feedback.push("Siéntate un poco más erguido, te estás inclinando demasiado hacia atrás");
     }
 
     // Check for hunched shoulders
@@ -104,12 +104,12 @@ function App() {
       goodPosture[0].y - ((goodPosture[11].y + goodPosture[12].y) / 2)
     );
     if (neckLength < goodNeckLength * 0.95) {
-      feedback.push("Relax your shoulders and stretch your neck");
+      feedback.push("Relaja los hombros y estira el cuello");
     }
 
     // Provide positive feedback if posture is good
     if (feedback.length === 0) {
-      feedback.push("Great posture! Keep it up!");
+      feedback.push("¡Excelente postura! ¡Mantén así!");
     }
 
     return feedback.join(". ");
@@ -124,7 +124,7 @@ function App() {
     }
 
     if (!results.poseLandmarks) { //if the model is unable to detect a pose 
-      console.log("No pose detected.");
+      console.log("No se detectó postura.");
       postureRef.current = -1;//change pose state to "undetected", can't track pose
       changeStyleProperty("--btn-color","rgba(0, 105, 237, 0.25)"); //fade out the calubrate button by reducing opacity
       return;
@@ -190,17 +190,17 @@ function App() {
       setPostureFeedback(feedback);
 
       // Update posture status
-      if (feedback.includes("Great posture!")) {
-        changeStyleProperty('--posture-status',"'GOOD'");
+      if (feedback.includes("¡Excelente postura!")) {
+        changeStyleProperty('--posture-status',"'BUENA'");
         badPostureCount = 0;
       } else {
-        changeStyleProperty('--posture-status',"'NEEDS IMPROVEMENT'");
+        changeStyleProperty('--posture-status',"'MEJORAR'");
         badPostureCount++;
       }
 
       // Provide audio feedback if needed
       if(badPostureCount >= 60){ // 60 frames = 2 seconds of bad posture
-        showNotification("Posture needs attention!");
+        showNotification("¡La postura necesita atención!");
         
         const currentTime = Date.now();
         if (currentTime - lastAudioFeedbackTime > audioFeedbackInterval) {
@@ -214,7 +214,7 @@ function App() {
 
     if(btnSelected){
       goodPosture = landmarks; //obtain a copy of the "good pose"
-      console.log("Calibrate button was clicked. New landmarks have been saved.");
+      console.log("Botón de calibración fue presionado. Nuevos puntos de referencia han sido guardados.");
       setBtn(false);
     }
 
@@ -225,14 +225,14 @@ function App() {
     //determine if the user's posture is bad or not
     if(badPosture(landmarks, goodPosture)){
       badPostureCount++;
-      changeStyleProperty('--posture-status',"'BAD'"); //maybe move this inside conditional
+      changeStyleProperty('--posture-status',"'MALA'"); //maybe move this inside conditional
       if(badPostureCount >= 60){ //60 frames = 2 seconds of bad posture
-        showNotification("Correct your posture!");
+        showNotification("¡Corrige tu postura!");
         
         // Add audio feedback
         const currentTime = Date.now();
         if (currentTime - lastAudioFeedbackTime > audioFeedbackInterval) {
-          speakFeedback(postureFeedback || "Your posture needs correction. Please sit up straight.");
+          speakFeedback(postureFeedback || "Tu postura necesita corrección. Por favor, siéntate erguido.");
           setLastAudioFeedbackTime(currentTime);
         }
         
@@ -240,7 +240,7 @@ function App() {
       }
     }else{
       badPostureCount = 0;
-      changeStyleProperty('--posture-status',"'GOOD'");
+      changeStyleProperty('--posture-status',"'BUENA'");
     }
   }
 
@@ -273,7 +273,7 @@ function App() {
     }
 
     if(!("Notification" in window)) {
-      alert("Browser does not support desktop notification");
+      alert("El navegador no soporta notificaciones de escritorio");
     } else {
       Notification.requestPermission();
     }
@@ -302,7 +302,7 @@ function App() {
               className="canvas absolute top-0 left-0 rounded-3xl w-full h-full z-20"
             />
             <div className="absolute top-4 left-4 bg-deep-space bg-opacity-70 text-neon-blue px-3 py-1 rounded-full text-sm font-medium z-30 backdrop-filter backdrop-blur-sm">
-              Live Feed
+              Transmisión en Vivo
             </div>
             {postureFeedback && (
               <div className="absolute bottom-4 left-4 right-4 bg-deep-space bg-opacity-70 text-neon-green px-3 py-2 rounded-lg text-sm font-medium z-30 backdrop-filter backdrop-blur-sm">
@@ -313,7 +313,7 @@ function App() {
         </div>
       </div>
       <footer className="bg-deep-space text-neon-blue py-2 text-center">
-        <p className="text-sm">made with 💌 by Prince</p>
+        <p className="text-sm">Desarrollado con 💙 por PosturaPro</p>
       </footer>
     </div>
   );

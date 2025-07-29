@@ -1,9 +1,9 @@
-# 🪑 ergoSmart: Your AI-Powered Posture Coach
+# 🪑 PosturaPro: Tu Entrenador de Postura con IA
 
 <div align="center">
-  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/ergosmart.png?raw=true" alt="ergoSmart Logo" width="200"/>
+  <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/ergosmart.png?raw=true" alt="PosturaPro Logo" width="200"/>
   <br>
-  <em>Revolutionizing workplace ergonomics with artificial intelligence</em>
+  <em>Revolucionando la ergonomía en el trabajo con inteligencia artificial</em>
 </div>
 
 ---
@@ -15,26 +15,26 @@
   <img src="https://github.com/princesinghrajput/ergoSmart/blob/main/public/screenshots/img2.png?raw=true" alt="Posture Feedback" width="30%"/>
 </div>
 
-## 🌐 Blog Post
-For a deeper dive into how ergoSmart was built, including detailed explanations and code snippets, check out the <a href="https://medium.com/@psr8084/building-a-real-time-posture-monitoring-application-with-mediapipe-and-react-a-comprehensive-guide-e7c7a8adc536"> Medium Post</a>.
+## 🌐 Artículo del Blog
+Para una explicación más profunda de cómo se construyó PosturaPro, incluyendo explicaciones detalladas y fragmentos de código, consulta el <a href="https://medium.com/@psr8084/building-a-real-time-posture-monitoring-application-with-mediapipe-and-react-a-comprehensive-guide-e7c7a8adc536"> Artículo en Medium</a>.
 
-## 🌟 Features
+## 🌟 Características
 
-- 🎥 Real-time posture analysis using webcam feed
-- 🤖 AI-driven personalized posture feedback
-- 🗣️ Audio notifications for prolonged poor posture
-- 🎨 Sleek, user-friendly interface
-- 📱 Responsive design for all devices
+- 🎥 Análisis de postura en tiempo real usando la cámara web
+- 🤖 Retroalimentación personalizada de postura impulsada por IA
+- 🗣️ Notificaciones de audio para postura incorrecta prolongada
+- 🎨 Interfaz elegante y fácil de usar
+- 📱 Diseño responsivo para todos los dispositivos
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
-1. Clone the repo:   ```
+1. Clona el repositorio:   ```
    git clone https://github.com/princesinghrajput/ergoSmart.git   ```
-2. Install dependencies:   ```
+2. Instala las dependencias:   ```
    cd ergosmart && npm install   ```
-3. Start the app:   ```
+3. Inicia la aplicación:   ```
    npm start   ```
-4. Open `http://localhost:3000` in your browser
+4. Abre `http://localhost:3000` en tu navegador
 
 ## 🛠️ Technologies
 
@@ -43,26 +43,26 @@ For a deeper dive into how ergoSmart was built, including detailed explanations 
 - MediaPipe Pose
 - Tailwind CSS
 
-## 🧠 How It Works
+## 🧠 Cómo Funciona
 
-1. **Pose Estimation**: ergoSmart uses MediaPipe Pose to track key body landmarks in real-time.
-2. **Posture Analysis**: Your current posture is compared to an ideal model.
-3. **Feedback Generation**: Realtime posture improvement suggestions.
-4. **Smart Notifications**: Receive timely audio and visual alerts for posture correction.
+1. **Estimación de Postura**: PosturaPro usa MediaPipe Pose para rastrear puntos clave del cuerpo en tiempo real.
+2. **Análisis de Postura**: Tu postura actual se compara con un modelo ideal.
+3. **Generación de Retroalimentación**: Sugerencias de mejora de postura en tiempo real.
+4. **Notificaciones Inteligentes**: Recibe alertas de audio y visuales oportunas para la corrección de postura.
 
 
-## 🤝 Contributing
+## 🤝 Contribuciones
 
-You're welcome to contribute! If you have suggestions for improvements or encounter any issues, please feel free to open an issue or submit a pull request.
+¡Eres bienvenido a contribuir! Si tienes sugerencias para mejoras o encuentras algún problema, no dudes en abrir un issue o enviar un pull request.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Haz fork del repositorio
+2. Crea tu rama de características (`git checkout -b feature/CaracteristicaIncreible`)
+3. Haz commit de tus cambios (`git commit -m 'Agregar alguna CaracteristicaIncreible'`)
+4. Haz push a la rama (`git push origin feature/CaracteristicaIncreible`)
+5. Abre un Pull Request
 
 ---
 
 <div align="center">
-  Made with 💙 by Prince | Empowering better posture, one sit at a time
+  Desarrollado con 💙 por PosturaPro | Potenciando mejor postura, una sesión a la vez
 </div>
